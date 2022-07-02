@@ -1,0 +1,50 @@
+<div class="container my-4">
+  <h1>Welcome to ngid-tab Tutorial</h1>
+  <h4 class="mb-3">Create a reusable tab component on Angular app</h4>
+  <br />
+  <input
+    type="text"
+    class="form-control"
+    (change)="handleSetDisabled($event)"
+    placeholder="Disabled tab item"
+  />
+  <br />
+  <input
+    type="text"
+    class="form-control"
+    (change)="handleSetHidden($event)"
+    placeholder="Hidden tab item"
+  />
+  <br />
+  <ngid-tab [isVertical]="true">
+    <ngid-tab-item
+      *ngFor="let item of [1, 2, 3, 4]"
+      [header]="'Tab ' + item"
+      [isActive]="item === 1"
+      [isDisabled]="item === disabledItem"
+      [isHidden]="item === hiddenItem"
+    >
+      <ng-template #headerRight>
+        <em class="fas fa-info-circle text-primary"></em>
+      </ng-template>
+
+      <h4>Content For Item {{ item }}</h4>
+      <!-- <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore alias
+        rem tenetur, assumenda adipisci voluptates ab debitis animi architecto
+        dolores nam impedit molestias aperiam officia perferendis minima quaerat
+        nesciunt neque.
+      </p> -->
+    </ngid-tab-item>
+  </ngid-tab>
+  <br />
+  <br />
+  <ngid-tab>
+    <ngid-tab-item header="Example One" [isActive]="true">
+      <p>Example one content</p>
+    </ngid-tab-item>
+    <ngid-tab-item header="Example Two">
+      <p>Example two content</p>
+    </ngid-tab-item>
+  </ngid-tab>
+</div>

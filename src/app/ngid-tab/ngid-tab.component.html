@@ -1,0 +1,39 @@
+<div
+  class="ngid-tab"
+  [ngClass]="isVertical ? 'ngid-tab-vertical' : 'ng-tab-horizontal'"
+>
+  <div class="ngid-tab-header">
+    <ul class="ngid-tab-list">
+      <ng-container *ngFor="let tab of state.tabs">
+        <li class="ngid-tab-list-item" *ngIf="!tab.isHidden">
+          <a
+            href="#"
+            class="ngid-tab-list-item-link"
+            [ngClass]="[
+              tab.isActive ? 'active' : '',
+              tab.isDisabled ? 'disabled' : ''
+            ]"
+            (click)="handleSetActiveNgidTabItem($event, tab)"
+          >
+            <ng-container *ngTemplateOutlet="tab.headerLeftTmpl"></ng-container>
+
+            <ng-container *ngIf="!tab.headerTmpl">
+              {{ tab.header }}
+            </ng-container>
+
+            <ng-container *ngIf="tab.headerTmpl">
+              <ng-container *ngTemplateOutlet="tab.headerTmpl"></ng-container>
+            </ng-container>
+
+            <ng-container
+              *ngTemplateOutlet="tab.headerRightTmpl"
+            ></ng-container>
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+  <div class="ngid-tab-body">
+    <ng-content select="ngid-tab-item"></ng-content>
+  </div>
+</div>

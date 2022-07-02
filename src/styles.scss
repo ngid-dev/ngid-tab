@@ -1,0 +1,105 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+$border-color: #e0e0e0;
+$border-width: 1px;
+
+div.ngid-tab {
+  display: block;
+  overflow: hidden;
+  div.ngid-tab-header {
+    ul.ngid-tab-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-bottom: $border-width solid $border-color;
+      li.ngid-tab-list-item {
+        display: inline-block;
+        a {
+          text-decoration: none;
+          padding: 5px 10px;
+          display: block;
+          position: relative;
+          bottom: -1px;
+          border: $border-width solid transparent;
+          &:hover,
+          &.active {
+            color: var(--bs-primary);
+            border: $border-width solid $border-color;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+          }
+          &.active {
+            border-bottom: $border-width solid #fff;
+            color: #474747;
+          }
+          &.disabled {
+            background-color: #f8f8f8;
+            color: #e0e0e0;
+            border-color: transparent;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+  div.ngid-tab-body {
+    padding: 10px 0;
+  }
+
+  &.ngid-tab-vertical {
+    display: flex;
+    div.ngid-tab-header {
+      width: 200px;
+      float: left;
+      ul.ngid-tab-list {
+        border-bottom: unset;
+        li.ngid-tab-list-item {
+          display: block;
+          &:not(:last-child) {
+            a {
+              border-bottom: 1px solid transparent !important;
+            }
+          }
+          a {
+            bottom: 0;
+            right: -1px;
+            border: $border-width solid $border-color;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+            &:hover,
+            &.active {
+              color: var(--bs-primary);
+              border: $border-width solid $border-color;
+              border-top-right-radius: 0;
+              border-top-left-radius: 5px;
+              border-bottom-left-radius: 5px;
+            }
+            &:hover {
+              background-color: #fafafa;
+            }
+            &.active {
+              border-right: 1px solid #fff;
+              color: #474747;
+            }
+            &.disabled {
+              background-color: #f8f8f8;
+              color: #e0e0e0;
+            }
+          }
+        }
+      }
+    }
+    div.ngid-tab-body {
+      width: calc(100% - 200px);
+      float: left;
+      padding: 10px;
+      border: $border-width solid $border-color;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+}
